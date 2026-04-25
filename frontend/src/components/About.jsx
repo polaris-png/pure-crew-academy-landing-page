@@ -1,72 +1,72 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const STATS = [
+  { n: "3", l: "Modalidades" },
+  { n: "200+", l: "Alunos na crew" },
+  { n: "7", l: "Anos de estrada" },
+  { n: "1:6", l: "Rácio nas aulas" },
+];
+
 export const About = () => {
   return (
     <section
       id="crew"
       data-testid="about-section"
-      className="bg-white text-black py-24 md:py-40 px-4 md:px-12 border-y border-black"
+      className="py-16 md:py-24 px-5 md:px-8"
     >
-      <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-        <div className="md:col-span-3">
-          <p className="text-[11px] tracking-[0.4em] uppercase mb-4">
-            (01) — A CREW
-          </p>
-          <div className="h-px w-16 bg-black" />
+      <div className="max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+          <div className="md:col-span-5">
+            <p className="text-xs font-medium text-neutral-500 mb-3 tracking-wide">
+              A CREW
+            </p>
+            <h2
+              data-testid="about-title"
+              className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 leading-tight"
+            >
+              Não é academia. <br />
+              <span className="text-neutral-400">É crew.</span>
+            </h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="md:col-span-7 space-y-5 text-neutral-600 leading-relaxed text-base md:text-lg"
+          >
+            <p data-testid="about-paragraph-1">
+              A Pure Crew nasceu da rua, do tatami e da água. Aqui treinamos
+              juntos, caímos juntos, voltamos juntos. Sem ego — só progresso.
+            </p>
+            <p data-testid="about-paragraph-2">
+              Três disciplinas, uma filosofia: o movimento puro como linguagem.
+              Não vens cá fazer aulas — entras na crew.
+            </p>
+          </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="md:col-span-9"
-        >
-          <h2
-            data-testid="about-title"
-            className="font-black uppercase tracking-[-0.03em] leading-[0.9] text-4xl md:text-6xl lg:text-7xl mb-10"
-          >
-            NÃO É ACADEMIA.
-            <br />
-            É <span className="italic font-light">crew</span>.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl">
-            <p
-              data-testid="about-paragraph-1"
-              className="text-sm md:text-base uppercase tracking-[0.14em] leading-relaxed"
+        {/* Stats row */}
+        <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+          {STATS.map((s, i) => (
+            <motion.div
+              key={s.l}
+              data-testid={`about-stat-${i}`}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="pc-card-flat p-6"
             >
-              A Pure Crew nasceu da rua, do tatami e da água. Aqui a gente treina
-              junto, cai junto, levanta junto. Não tem ego — tem progresso.
-            </p>
-            <p
-              data-testid="about-paragraph-2"
-              className="text-sm md:text-base uppercase tracking-[0.14em] leading-relaxed"
-            >
-              Três disciplinas. Uma filosofia. O movimento puro como linguagem.
-              Você não vem aqui pra fazer aula — você entra pra crew.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-6 md:gap-12 border-t border-black pt-10">
-            {[
-              { n: "03", l: "MODALIDADES" },
-              { n: "+200", l: "ALUNOS NA CREW" },
-              { n: "07", l: "ANOS DE ESTRADA" },
-            ].map((s, i) => (
-              <div key={i} data-testid={`about-stat-${i}`}>
-                <div className="text-4xl md:text-6xl font-black tracking-tighter">
-                  {s.n}
-                </div>
-                <div className="text-[10px] md:text-xs tracking-[0.3em] uppercase mt-2 text-black/70">
-                  {s.l}
-                </div>
+              <div className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
+                {s.n}
               </div>
-            ))}
-          </div>
-        </motion.div>
+              <div className="text-sm text-neutral-500 mt-1.5">{s.l}</div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

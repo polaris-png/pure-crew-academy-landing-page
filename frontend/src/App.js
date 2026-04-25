@@ -5,9 +5,8 @@ import { Toaster } from "sonner";
 
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Marquee } from "@/components/Marquee";
-import { About } from "@/components/About";
 import { Modalidades } from "@/components/Modalidades";
+import { About } from "@/components/About";
 import { Galeria } from "@/components/Galeria";
 import { MerchTeaser } from "@/components/MerchTeaser";
 import { Inscricao } from "@/components/Inscricao";
@@ -15,40 +14,28 @@ import { Footer } from "@/components/Footer";
 
 const Landing = () => {
   return (
-    <div className="App relative bg-white text-black overflow-x-clip" data-testid="landing-root">
-      <div className="grain-overlay" aria-hidden />
+    <div className="App min-h-screen" data-testid="landing-root">
       <Header />
       <main>
         <Hero />
-        <Marquee
-          items={["SURFSKATE", "SURF", "JIU-JITSU", "PURE CREW"]}
-          dark
-          testId="marquee-disciplines"
-        />
-        <About />
         <Modalidades />
-        <Marquee
-          items={["ONDA", "CONCRETO", "TATAMI", "MOVIMENTO PURO"]}
-          dark={false}
-          testId="marquee-words"
-        />
+        <About />
         <Galeria />
         <MerchTeaser />
         <Inscricao />
-        <Footer />
       </main>
+      <Footer />
       <Toaster
         position="bottom-right"
         toastOptions={{
           style: {
-            background: "#000",
-            color: "#fff",
-            border: "1px solid #fff",
-            borderRadius: 0,
+            background: "#ffffff",
+            color: "#0a0a0a",
+            border: "1px solid #e5e7eb",
+            borderRadius: "12px",
             fontFamily: "Montserrat, sans-serif",
-            textTransform: "uppercase",
-            letterSpacing: "0.18em",
-            fontSize: "11px",
+            fontSize: "13px",
+            boxShadow: "0 8px 24px rgba(15,15,15,0.08)",
           },
         }}
       />

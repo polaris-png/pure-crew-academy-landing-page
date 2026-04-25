@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Instagram, MessageCircle, Mail, Send } from "lucide-react";
+import { ArrowRight, Instagram, MessageCircle, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { BRAND } from "../lib/constants";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const MODS = [
-  { v: "surfskate", l: "SURFSKATE" },
-  { v: "surf", l: "SURF" },
-  { v: "jiujitsu", l: "JIU-JITSU" },
-  { v: "todos", l: "TODOS" },
+  { v: "surfskate", l: "Surfskate" },
+  { v: "surf", l: "Surf" },
+  { v: "jiujitsu", l: "Jiu-Jitsu" },
+  { v: "todos", l: "Todos" },
 ];
 
 export const Inscricao = () => {
@@ -24,24 +24,22 @@ export const Inscricao = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((s) => ({ ...s, [name]: value }));
-  };
+  const handleChange = (e) =>
+    setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.phone) {
-      toast.error("Preenche nome, email e telefone, crew.");
+      toast.error("Preenche nome, email e telefone.");
       return;
     }
     setLoading(true);
     try {
       await axios.post(`${API}/leads`, form);
-      toast.success("Inscrição recebida. A crew entra em contato.");
+      toast.success("Inscrição recebida. A crew entra em contacto em breve.");
       setForm({ name: "", email: "", phone: "", modality: "surfskate", message: "" });
-    } catch (err) {
-      toast.error("Erro ao enviar. Tenta de novo ou chama no WhatsApp.");
+    } catch {
+      toast.error("Erro ao enviar. Tenta novamente ou contacta-nos pelo WhatsApp.");
     } finally {
       setLoading(false);
     }
@@ -51,198 +49,225 @@ export const Inscricao = () => {
     <section
       id="inscricao"
       data-testid="inscricao-section"
-      className="bg-black text-white py-24 md:py-32 px-4 md:px-12"
+      className="py-16 md:py-24 px-5 md:px-8"
     >
-      <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        {/* Left: copy + direct contacts */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7 }}
-          className="lg:col-span-5"
-        >
-          <p className="text-[11px] tracking-[0.4em] uppercase text-white/60 mb-4">
-            (05) — ENTRA NA CREW
+      <div className="max-w-[1100px] mx-auto">
+        <div className="text-center mb-10 md:mb-14 max-w-xl mx-auto">
+          <p className="text-xs font-medium text-neutral-500 mb-3 tracking-wide">
+            INSCRIÇÃO
           </p>
           <h2
             data-testid="inscricao-title"
-            className="font-black uppercase tracking-[-0.03em] leading-[0.9] text-5xl md:text-6xl lg:text-7xl"
+            className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900"
           >
-            BORA
-            <br />
-            TREINAR?
+            Vamos treinar?
           </h2>
-          <p className="mt-6 text-xs md:text-sm tracking-[0.18em] uppercase text-white/65 max-w-md">
-            Deixa teu contato ou chama direto. A gente responde rápido —
-            é assim que a crew funciona.
+          <p className="mt-3 text-neutral-600">
+            Deixa o teu contacto e nós respondemos em poucas horas.
           </p>
+        </div>
 
-          <div className="mt-12 space-y-3">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* Form card */}
+          <motion.form
+            data-testid="inscricao-form"
+            onSubmit={handleSubmit}
+            noValidate
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="pc-card p-6 md:p-8 lg:col-span-7"
+          >
+            <div className="space-y-4">
+              <div>
+                <label className="pc-label" htmlFor="lead-name">
+                  Nome completo
+                </label>
+                <input
+                  id="lead-name"
+                  data-testid="form-input-name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Como te chamas?"
+                  className="pc-field"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="pc-label" htmlFor="lead-email">
+                    Email
+                  </label>
+                  <input
+                    id="lead-email"
+                    data-testid="form-input-email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="tu@email.com"
+                    className="pc-field"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="pc-label" htmlFor="lead-phone">
+                    Telefone / WhatsApp
+                  </label>
+                  <input
+                    id="lead-phone"
+                    data-testid="form-input-phone"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="+351 ..."
+                    className="pc-field"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="pc-label">Modalidade de interesse</label>
+                <div className="flex flex-wrap gap-2">
+                  {MODS.map((m) => (
+                    <button
+                      type="button"
+                      key={m.v}
+                      data-testid={`form-modality-${m.v}`}
+                      onClick={() => setForm((s) => ({ ...s, modality: m.v }))}
+                      className={`text-sm font-medium px-3.5 py-2 rounded-lg border transition-colors ${
+                        form.modality === m.v
+                          ? "bg-neutral-900 text-white border-neutral-900"
+                          : "bg-white text-neutral-700 border-neutral-200 hover:border-neutral-400"
+                      }`}
+                    >
+                      {m.l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="pc-label" htmlFor="lead-msg">
+                  Mensagem <span className="text-neutral-400 font-normal">(opcional)</span>
+                </label>
+                <textarea
+                  id="lead-msg"
+                  data-testid="form-input-message"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Conta-nos um pouco do que procuras..."
+                  className="pc-field"
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
+              <p className="text-xs text-neutral-400">
+                Os teus dados ficam connosco. Não partilhamos.
+              </p>
+              <button
+                type="submit"
+                data-testid="form-submit-btn"
+                disabled={loading}
+                className="pc-btn pc-btn-solid disabled:opacity-50"
+              >
+                {loading ? "A enviar..." : "Enviar inscrição"}
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          </motion.form>
+
+          {/* Direct contacts */}
+          <motion.aside
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-5 space-y-3"
+          >
             <a
               data-testid="contact-whatsapp"
               href={BRAND.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between border border-white/20 hover:border-white px-5 py-4 group transition-colors"
+              className="pc-card p-5 flex items-center justify-between group"
             >
-              <span className="flex items-center gap-3 text-sm tracking-[0.22em] uppercase">
-                <MessageCircle size={18} /> WHATSAPP DIRETO
+              <span className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center">
+                  <MessageCircle size={18} strokeWidth={1.5} />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-neutral-900">
+                    WhatsApp direto
+                  </span>
+                  <span className="block text-xs text-neutral-500">
+                    +351 967 282 755
+                  </span>
+                </span>
               </span>
-              <ArrowUpRight
-                size={18}
-                className="opacity-60 group-hover:opacity-100 group-hover:rotate-12 transition-all"
+              <ArrowRight
+                size={16}
+                className="text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all"
               />
             </a>
+
             <a
               data-testid="contact-instagram"
               href={BRAND.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between border border-white/20 hover:border-white px-5 py-4 group transition-colors"
+              className="pc-card p-5 flex items-center justify-between group"
             >
-              <span className="flex items-center gap-3 text-sm tracking-[0.22em] uppercase">
-                <Instagram size={18} /> {BRAND.instagramHandle}
+              <span className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center">
+                  <Instagram size={18} strokeWidth={1.5} />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-neutral-900">
+                    Instagram
+                  </span>
+                  <span className="block text-xs text-neutral-500">
+                    {BRAND.instagramHandle}
+                  </span>
+                </span>
               </span>
-              <ArrowUpRight
-                size={18}
-                className="opacity-60 group-hover:opacity-100 group-hover:rotate-12 transition-all"
+              <ArrowRight
+                size={16}
+                className="text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all"
               />
             </a>
+
             <a
               data-testid="contact-email"
               href={`mailto:${BRAND.email}`}
-              className="flex items-center justify-between border border-white/20 hover:border-white px-5 py-4 group transition-colors"
-            >
-              <span className="flex items-center gap-3 text-sm tracking-[0.22em] uppercase">
-                <Mail size={18} /> {BRAND.email}
-              </span>
-              <ArrowUpRight
-                size={18}
-                className="opacity-60 group-hover:opacity-100 group-hover:rotate-12 transition-all"
-              />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Right: form */}
-        <motion.form
-          data-testid="inscricao-form"
-          onSubmit={handleSubmit}
-          noValidate
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="lg:col-span-7 lg:pl-12 lg:border-l lg:border-white/15"
-        >
-          <p className="text-[11px] tracking-[0.4em] uppercase text-white/60 mb-8">
-            FICHA DE INSCRIÇÃO
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
-            <div className="md:col-span-2">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-white/50">
-                NOME COMPLETO *
-              </label>
-              <input
-                data-testid="form-input-name"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Como te chamam?"
-                className="pc-input"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="text-[10px] tracking-[0.3em] uppercase text-white/50">
-                EMAIL *
-              </label>
-              <input
-                data-testid="form-input-email"
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="voce@email.com"
-                className="pc-input"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="text-[10px] tracking-[0.3em] uppercase text-white/50">
-                TELEFONE / WHATSAPP *
-              </label>
-              <input
-                data-testid="form-input-phone"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="(11) 9 0000-0000"
-                className="pc-input"
-                required
-              />
-            </div>
-
-            <div className="md:col-span-2 mt-4">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-white/50 block mb-3">
-                MODALIDADE DE INTERESSE
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {MODS.map((m) => (
-                  <button
-                    type="button"
-                    key={m.v}
-                    data-testid={`form-modality-${m.v}`}
-                    onClick={() => setForm((s) => ({ ...s, modality: m.v }))}
-                    className={`text-[11px] tracking-[0.22em] uppercase px-4 py-2 border transition-all ${
-                      form.modality === m.v
-                        ? "bg-white text-black border-white"
-                        : "bg-transparent text-white border-white/30 hover:border-white"
-                    }`}
-                  >
-                    {m.l}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="md:col-span-2 mt-2">
-              <label className="text-[10px] tracking-[0.3em] uppercase text-white/50">
-                MENSAGEM (OPCIONAL)
-              </label>
-              <textarea
-                data-testid="form-input-message"
-                name="message"
-                rows={3}
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Conta um pouco do que tu busca..."
-                className="pc-input resize-none"
-              />
-            </div>
-          </div>
-
-          <div className="mt-10 flex items-center justify-between flex-wrap gap-4">
-            <p className="text-[10px] tracking-[0.25em] uppercase text-white/40 max-w-xs">
-              * Campos obrigatórios. A gente nunca compartilha seus dados.
-            </p>
-            <button
-              type="submit"
-              data-testid="form-submit-btn"
-              disabled={loading}
-              className="pc-btn pc-btn--inverted disabled:opacity-50"
+              className="pc-card p-5 flex items-center justify-between group"
             >
               <span className="flex items-center gap-3">
-                {loading ? "ENVIANDO..." : "ENTRAR NA CREW"}{" "}
-                <Send size={16} />
+                <span className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center">
+                  <Mail size={18} strokeWidth={1.5} />
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-neutral-900">
+                    Email
+                  </span>
+                  <span className="block text-xs text-neutral-500">
+                    {BRAND.email}
+                  </span>
+                </span>
               </span>
-            </button>
-          </div>
-        </motion.form>
+              <ArrowRight
+                size={16}
+                className="text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all"
+              />
+            </a>
+          </motion.aside>
+        </div>
       </div>
     </section>
   );

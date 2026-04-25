@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, MessageCircle, Youtube, Mail, ArrowUp } from "lucide-react";
+import { Instagram, MessageCircle, Youtube, Mail } from "lucide-react";
 import { BRAND } from "../lib/constants";
 
 export const Footer = () => {
@@ -7,88 +7,30 @@ export const Footer = () => {
   return (
     <footer
       data-testid="footer"
-      className="bg-black text-white px-4 md:px-12 pt-20 pb-8 border-t border-white/15"
+      className="border-t border-neutral-200 py-12 px-5 md:px-8 mt-8"
     >
-      <div className="max-w-[1500px] mx-auto">
-        {/* Massive wordmark */}
-        <div
-          aria-hidden
-          data-testid="footer-wordmark"
-          className="font-black uppercase tracking-[-0.05em] leading-[0.85] text-[24vw] md:text-[18vw] lg:text-[15vw] select-none"
-        >
-          PURE CREW.
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 mt-12 border-t border-white/15 pt-10">
-          <div className="md:col-span-4">
-            <img src={BRAND.logoUrl} alt="Pure Crew" className="h-16 w-auto invert" />
-            <p className="mt-5 text-[11px] tracking-[0.25em] uppercase text-white/55 max-w-xs">
-              Escola de surfskate, surf e jiu-jitsu. Comunidade primeiro,
-              progresso sempre.
-            </p>
+      <div className="max-w-[1100px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+          <div className="md:col-span-5 flex items-center gap-3">
+            <img src={BRAND.logoUrl} alt="Pure Crew" className="h-10 w-auto" />
+            <div>
+              <p className="text-sm font-semibold text-neutral-900">Pure Crew</p>
+              <p className="text-xs text-neutral-500">
+                Surfskate · Surf · Jiu-Jitsu
+              </p>
+            </div>
           </div>
 
-          <div className="md:col-span-4">
-            <p className="text-[10px] tracking-[0.35em] uppercase text-white/45 mb-4">
-              REDES
-            </p>
-            <ul className="space-y-3">
-              <li>
-                <a
-                  data-testid="footer-instagram"
-                  href={BRAND.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pc-link flex items-center gap-3 text-sm tracking-[0.2em] uppercase"
-                >
-                  <Instagram size={16} /> {BRAND.instagramHandle}
-                </a>
-              </li>
-              <li>
-                <a
-                  data-testid="footer-whatsapp"
-                  href={BRAND.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pc-link flex items-center gap-3 text-sm tracking-[0.2em] uppercase"
-                >
-                  <MessageCircle size={16} /> WHATSAPP
-                </a>
-              </li>
-              <li>
-                <a
-                  data-testid="footer-youtube"
-                  href={BRAND.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pc-link flex items-center gap-3 text-sm tracking-[0.2em] uppercase"
-                >
-                  <Youtube size={16} /> YOUTUBE
-                </a>
-              </li>
-              <li>
-                <a
-                  data-testid="footer-email"
-                  href={`mailto:${BRAND.email}`}
-                  className="pc-link flex items-center gap-3 text-sm tracking-[0.2em] uppercase"
-                >
-                  <Mail size={16} /> {BRAND.email}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
-            <p className="text-[10px] tracking-[0.35em] uppercase text-white/45 mb-4">
+          <div className="md:col-span-3">
+            <p className="text-xs font-medium text-neutral-400 mb-3 tracking-wide">
               NAVEGAR
             </p>
-            <ul className="space-y-3 text-sm tracking-[0.2em] uppercase">
+            <ul className="space-y-2 text-sm">
               {[
-                ["crew", "A CREW"],
-                ["modalidades", "MODALIDADES"],
-                ["galeria", "GALERIA"],
-                ["merch", "MERCH"],
-                ["inscricao", "INSCRIÇÃO"],
+                ["modalidades", "Modalidades"],
+                ["crew", "A Crew"],
+                ["galeria", "Galeria"],
+                ["inscricao", "Inscrição"],
               ].map(([id, label]) => (
                 <li key={id}>
                   <button
@@ -98,7 +40,7 @@ export const Footer = () => {
                         .getElementById(id)
                         ?.scrollIntoView({ behavior: "smooth" })
                     }
-                    className="pc-link"
+                    className="text-neutral-600 hover:text-neutral-900 transition-colors"
                   >
                     {label}
                   </button>
@@ -106,19 +48,39 @@ export const Footer = () => {
               ))}
             </ul>
           </div>
+
+          <div className="md:col-span-4">
+            <p className="text-xs font-medium text-neutral-400 mb-3 tracking-wide">
+              REDES
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { test: "footer-instagram", href: BRAND.instagram, Icon: Instagram, label: "Instagram" },
+                { test: "footer-whatsapp", href: BRAND.whatsapp, Icon: MessageCircle, label: "WhatsApp" },
+                { test: "footer-youtube", href: BRAND.youtube, Icon: Youtube, label: "YouTube" },
+                { test: "footer-email", href: `mailto:${BRAND.email}`, Icon: Mail, label: "Email" },
+              ].map((s) => (
+                <a
+                  key={s.test}
+                  data-testid={s.test}
+                  href={s.href}
+                  target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl border border-neutral-200 hover:border-neutral-900 hover:text-neutral-900 text-neutral-500 flex items-center justify-center transition-colors"
+                  aria-label={s.label}
+                >
+                  <s.Icon size={16} strokeWidth={1.6} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div className="mt-16 border-t border-white/15 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-white/40">
-            © {year} PURE CREW. TODOS OS DIREITOS RESERVADOS.
+        <div className="border-t border-neutral-200 pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+          <p className="text-xs text-neutral-400">
+            © {year} Pure Crew. Todos os direitos reservados.
           </p>
-          <button
-            data-testid="back-to-top"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-[10px] tracking-[0.3em] uppercase flex items-center gap-2 pc-link"
-          >
-            <ArrowUp size={14} /> VOLTAR AO TOPO
-          </button>
+          <p className="text-xs text-neutral-400">Porto, Portugal</p>
         </div>
       </div>
     </footer>

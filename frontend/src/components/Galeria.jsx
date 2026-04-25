@@ -1,91 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Camera } from "lucide-react";
+import { Image as ImageIcon } from "lucide-react";
 
-const TILES = [
-  { label: "SURFSKATE", sub: "FRAME 01", variant: "dark", cls: "md:col-span-5 md:row-span-2" },
-  { label: "ONDA", sub: "FRAME 02", variant: "light", cls: "md:col-span-4" },
-  { label: "FLOW", sub: "FRAME 03", variant: "dark", cls: "md:col-span-3" },
-  { label: "TATAMI", sub: "FRAME 04", variant: "light", cls: "md:col-span-3" },
-  { label: "CONCRETO", sub: "FRAME 05", variant: "dark", cls: "md:col-span-4" },
-  { label: "A CREW", sub: "FRAME 06", variant: "dark", cls: "md:col-span-7" },
+const TABS = [
+  { id: "surf", label: "Surf" },
+  { id: "surfskate", label: "Surfskate" },
+  { id: "eventos", label: "Eventos" },
 ];
 
+const PLACEHOLDERS = {
+  surf: ["Frame 01", "Frame 02", "Frame 03", "Frame 04"],
+  surfskate: ["Frame 01", "Frame 02", "Frame 03", "Frame 04"],
+  eventos: ["Frame 01", "Frame 02", "Frame 03", "Frame 04"],
+};
+
 export const Galeria = () => {
+  const [tab, setTab] = useState("surfskate");
+
   return (
     <section
       id="galeria"
       data-testid="galeria-section"
-      className="bg-white text-black py-24 md:py-32 px-4 md:px-12"
+      className="py-16 md:py-24 px-5 md:px-8"
     >
-      <div className="max-w-[1500px] mx-auto">
-        <div className="mb-12 md:mb-16 flex items-end justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-[11px] tracking-[0.4em] uppercase mb-4 text-black/60">
-              (03) — REGISTRO
-            </p>
-            <h2
-              data-testid="galeria-title"
-              className="font-black uppercase tracking-[-0.03em] leading-[0.9] text-5xl md:text-7xl"
-            >
-              A CREW EM
-              <br />
-              MOVIMENTO.
-            </h2>
-          </div>
-          <p className="text-xs tracking-[0.2em] uppercase max-w-xs text-black/60">
-            Frames próprios chegando. Em breve, nossas próprias imagens.
+      <div className="max-w-[1100px] mx-auto">
+        <div className="text-center mb-10 md:mb-12">
+          <p className="text-xs font-medium text-neutral-500 mb-3 tracking-wide">
+            GALERIA
+          </p>
+          <h2
+            data-testid="galeria-title"
+            className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900"
+          >
+            A crew em movimento
+          </h2>
+          <p className="mt-3 text-neutral-600">
+            Frames das nossas aulas e eventos. Em breve, com fotos próprias.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[220px]">
-          {TILES.map((t, i) => (
-            <motion.div
-              key={i}
-              data-testid={`gallery-item-${i}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: i * 0.05 }}
-              className={`relative overflow-hidden border border-black flex flex-col justify-between p-5 md:p-7 group cursor-default ${
-                t.variant === "dark"
-                  ? "bg-black text-white"
-                  : "bg-white text-black"
-              } ${t.cls}`}
+        {/* Tabs */}
+        <div
+          role="tablist"
+          className="flex items-center justify-center gap-8 md:gap-12 border-b border-neutral-200 mb-10"
+        >
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              data-testid={`gallery-tab-${t.id}`}
+              data-active={tab === t.id}
+              onClick={() => setTab(t.id)}
+              className="pc-tab"
+              role="tab"
+              aria-selected={tab === t.id}
             >
-              {/* faint diagonal pattern */}
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-[0.08] pointer-events-none"
-                style={{
-                  backgroundImage: `repeating-linear-gradient(45deg, ${
-                    t.variant === "dark" ? "#fff" : "#000"
-                  } 0 1px, transparent 1px 14px)`,
-                }}
-              />
-
-              <div className="relative z-10 flex items-start justify-between text-[10px] tracking-[0.3em] uppercase opacity-70">
-                <span>{t.sub}</span>
-                <Camera size={14} />
-              </div>
-
-              <div className="relative z-10">
-                <p className="text-[10px] tracking-[0.35em] uppercase opacity-60 mb-2">
-                  EM BREVE
-                </p>
-                <h3 className="font-black uppercase leading-none tracking-[-0.02em] text-3xl md:text-5xl">
-                  {t.label}
-                </h3>
-              </div>
-            </motion.div>
+              {t.label.toUpperCase()}
+            </button>
           ))}
         </div>
 
+        {/* Grid */}
+        <motion.div
+          key={tab}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"
+        >
+          {PLACEHOLDERS[tab].map((label, i) => (
+            <div
+              key={`${tab}-${i}`}
+              data-testid={`gallery-item-${tab}-${i}`}
+              className="pc-card aspect-[4/3] flex flex-col items-center justify-center text-neutral-400 cursor-default group"
+            >
+              <ImageIcon
+                size={28}
+                strokeWidth={1.4}
+                className="text-neutral-300 group-hover:text-neutral-400 transition-colors"
+              />
+              <p className="text-[11px] font-medium tracking-wide mt-2 uppercase">
+                {label}
+              </p>
+              <p className="text-[10px] text-neutral-300 mt-0.5">Em breve</p>
+            </div>
+          ))}
+        </motion.div>
+
         <p
           data-testid="galeria-placeholder-note"
-          className="mt-8 text-[10px] tracking-[0.3em] uppercase text-black/45 text-center md:text-right"
+          className="mt-8 text-xs text-neutral-400 text-center"
         >
-          ★ Substitua estes blocos pelas suas próprias fotos editando o componente Galeria.
+          Os blocos serão substituídos pelas tuas próprias fotos.
         </p>
       </div>
     </section>
