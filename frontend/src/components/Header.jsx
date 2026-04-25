@@ -4,6 +4,7 @@ import { BRAND } from "../lib/constants";
 
 const NAV = [
   { id: "modalidades", label: "Modalidades" },
+  { id: "method", label: "Método" },
   { id: "crew", label: "A Crew" },
   { id: "galeria", label: "Galeria" },
   { id: "inscricao", label: "Inscrição" },

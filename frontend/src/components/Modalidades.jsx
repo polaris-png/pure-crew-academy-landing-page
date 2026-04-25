@@ -8,22 +8,18 @@ const ITEMS = [
     title: "Surfskate",
     body:
       "Carve, base e fluidez. Trabalhamos a leitura de transição e a ligação ao surf — a base que prepara o teu corpo para a água.",
-    tag: "Foco da casa",
-    featured: true,
   },
   {
     Icon: Waves,
     title: "Surf",
     body:
       "Da pré-paddle à manobra. Aulas no mar com vídeo-análise, leitura de ondas e progressão real, em grupos pequenos.",
-    tag: "Praia de Matosinhos",
   },
   {
     Icon: Swords,
     title: "Jiu-Jitsu",
     body:
       "Arte suave. Técnica que sobra, ego que falta. Fundamentos sólidos, drills constantes e rolagem com a crew.",
-    tag: "Casa da Música",
   },
 ];
 
@@ -66,23 +62,8 @@ export const Modalidades = () => {
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 className="pc-card p-7 flex flex-col"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center">
-                    <Icon size={22} strokeWidth={1.5} className="text-neutral-900" />
-                  </div>
-                  {it.featured && (
-                    <span
-                      data-testid="modalidade-featured-badge"
-                      className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#c25a46]/10 text-[#c25a46]"
-                    >
-                      {it.tag}
-                    </span>
-                  )}
-                  {!it.featured && (
-                    <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600">
-                      {it.tag}
-                    </span>
-                  )}
+                <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center mb-6">
+                  <Icon size={22} strokeWidth={1.5} className="text-neutral-900" />
                 </div>
 
                 <h3 className="text-xl font-semibold tracking-tight text-neutral-900 mb-2">

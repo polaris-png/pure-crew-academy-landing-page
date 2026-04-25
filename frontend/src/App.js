@@ -6,6 +6,8 @@ import { Toaster } from "sonner";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Modalidades } from "@/components/Modalidades";
+import { Method } from "@/components/Method";
+import { WhatYouGain } from "@/components/WhatYouGain";
 import { About } from "@/components/About";
 import { Galeria } from "@/components/Galeria";
 import { MerchTeaser } from "@/components/MerchTeaser";
@@ -19,6 +21,8 @@ const Landing = () => {
       <main>
         <Hero />
         <Modalidades />
+        <Method />
+        <WhatYouGain />
         <About />
         <Galeria />
         <MerchTeaser />

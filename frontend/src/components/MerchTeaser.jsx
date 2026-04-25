@@ -1,6 +1,5 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
-import { BRAND } from "../lib/constants";
+import { Clock } from "lucide-react";
 
 export const MerchTeaser = () => {
   return (
@@ -11,27 +10,29 @@ export const MerchTeaser = () => {
     >
       <div className="max-w-[1100px] mx-auto">
         <div className="pc-card-flat p-7 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-          <div>
-            <p className="text-xs font-medium text-neutral-500 mb-2 tracking-wide">
-              MERCH
-            </p>
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">
-              Veste a crew.
-            </h3>
-            <p className="mt-1.5 text-sm text-neutral-500 max-w-md">
-              Tees, hoodies e bonés em pequenas edições. Discreto. Pesado.
-            </p>
+          <div className="flex items-start gap-4">
+            <div className="w-11 h-11 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0 mt-0.5">
+              <Clock size={18} strokeWidth={1.5} className="text-neutral-700" />
+            </div>
+            <div>
+              <p className="text-xs font-medium text-neutral-500 mb-2 tracking-wide">
+                MERCH
+              </p>
+              <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900">
+                Brevemente.
+              </h3>
+              <p className="mt-1.5 text-sm text-neutral-500 max-w-md">
+                Estamos a preparar a primeira coleção da Pure Crew. Em breve,
+                tees, hoodies e bonés em pequenas edições.
+              </p>
+            </div>
           </div>
-          <a
-            data-testid="merch-cta"
-            href={BRAND.shop}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pc-btn"
+          <span
+            data-testid="merch-status"
+            className="text-[11px] font-medium px-3 py-1.5 rounded-full bg-neutral-900 text-white tracking-wide"
           >
-            Ver coleção
-            <ArrowRight size={16} />
-          </a>
+            EM DESENVOLVIMENTO
+          </span>
         </div>
       </div>
     </section>
