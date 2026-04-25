@@ -60,6 +60,9 @@ export const Hero = () => {
           >
             Plan. Shape. <span className="text-neutral-400">Act.</span>
           </h1>
+          <p className="mt-3 text-sm font-medium tracking-[0.18em] uppercase text-neutral-700">
+            Be PURE CREW
+          </p>
 
           <div
             data-testid="hero-description"

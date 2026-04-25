@@ -2,9 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const STATS = [
-  { n: "3", l: "Modalidades" },
-  { n: "200+", l: "Alunos na crew" },
-  { n: "7", l: "Anos de estrada" },
+  { n: "4", l: "Programas" },
+  { n: "Todos", l: "Idades e níveis" },
+  { n: "Diário", l: "Aulas disponíveis" },
   { n: "1:6", l: "Rácio nas aulas" },
 ];
 
@@ -25,8 +25,7 @@ export const About = () => {
               data-testid="about-title"
               className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 leading-tight"
             >
-              Não é academia. <br />
-              <span className="text-neutral-400">É crew.</span>
+              Be <span className="italic">PURE CREW</span>.
             </h2>
           </div>
 
@@ -42,8 +41,9 @@ export const About = () => {
               juntos, caímos juntos, voltamos juntos. Sem ego — só progresso.
             </p>
             <p data-testid="about-paragraph-2">
-              Três disciplinas, uma filosofia: o movimento puro como linguagem.
-              Não vens cá fazer aulas — entras na crew.
+              Quatro programas, uma filosofia: instrutores certificados,
+              metodologia guiada e um syllabus pensado a cada aluno. Aulas
+              todos os dias, para todas as idades e níveis.
             </p>
           </motion.div>
         </div>
