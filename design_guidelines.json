@@ -1,0 +1,127 @@
+{
+  "project_name": "PURE CREW Landing Page",
+  "theme": "Light/Dark Hybrid (Black and White Focus)",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) + Raw Editorial Streetwear",
+  "design_philosophy": "Raw, confident, community-driven. Editorial-magazine layout, asymmetric grids, oversized type, marquee/ticker bands, rough hand-drawn elements echoing the leaf logo, grain/noise overlay.",
+  "language": "Portuguese (Brazilian)",
+  "colors": {
+    "css_variables": {
+      "--background": "0 0% 100%",
+      "--foreground": "0 0% 0%",
+      "--background-inverted": "0 0% 0%",
+      "--foreground-inverted": "0 0% 100%",
+      "--accent-teal": "199 31% 26%",
+      "--accent-green": "148 25% 24%",
+      "--accent-terra": "10 52% 51%",
+      "--border": "0 0% 0%",
+      "--border-inverted": "0 0% 20%"
+    },
+    "tailwind_classes": {
+      "bg_primary": "bg-white",
+      "text_primary": "text-black",
+      "bg_inverted": "bg-black",
+      "text_inverted": "text-white",
+      "accent_teal": "text-[#2F4A5A] bg-[#2F4A5A]",
+      "accent_green": "text-[#2F4F3E] bg-[#2F4F3E]",
+      "accent_terra": "text-[#C25A46] bg-[#C25A46]"
+    },
+    "usage_rules": "Primary palette is purely #FFFFFF and #000000. Accents (#2F4A5A, #2F4F3E, #C25A46) must only be used as tiny dots, single-word highlights, or small hover state accents (<= 5% of surface)."
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Montserrat, sans-serif",
+      "body": "Montserrat, sans-serif"
+    },
+    "scales": {
+      "h1": "text-5xl md:text-7xl lg:text-[10vw] font-black uppercase tracking-tighter leading-none",
+      "h2": "text-4xl md:text-5xl lg:text-7xl font-bold uppercase tracking-tight leading-none",
+      "h3": "text-2xl md:text-3xl font-bold uppercase tracking-tight",
+      "body": "text-base md:text-lg font-normal uppercase tracking-widest leading-relaxed",
+      "marquee": "text-6xl md:text-8xl font-black uppercase tracking-tighter whitespace-nowrap"
+    },
+    "rules": "Montserrat everywhere. Headings are Bold/Black All-Caps. Body is Regular All-Caps. Extreme scale contrast between headings and body text."
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "p-4, p-8, p-12, p-16, p-24, p-32",
+    "grid_system": "Bento 'Tetris' Grid for features and gallery. Asymmetry and negative space.",
+    "borders": "1px solid black for light sections, 1px solid white/20 for dark sections. Sharp corners (rounded-none)."
+  },
+  "components_strategy": {
+    "html_tailwind_focus": "Use pure HTML + Tailwind for marketing layouts (hero, manifesto, gallery).",
+    "shadcn_usage": "Use Shadcn customized components ONLY for the lead capture form (Input, Textarea, Button, Checkbox).",
+    "animations": "Framer Motion for scroll reveals. react-fast-marquee for discipline bands. High-contrast hover states (e.g. bg-white hover:bg-black hover:text-white transition-colors duration-300).",
+    "visual_effects": "Grain overlay (pointer-events-none fixed full-screen noise). Halftone or grayscale CSS filters on images (grayscale contrast-125)."
+  },
+  "sections": [
+    {
+      "name": "Header",
+      "description": "Sticky top bar, solid background or backdrop-blur, brand logo, minimal nav, 'Inscreva-se' CTA.",
+      "style": "bg-white text-black border-b border-black"
+    },
+    {
+      "name": "Hero",
+      "description": "Massive typography, bold logo presence. Brand statement. Dual CTA: 'Inscreva-se' (Solid Black) and 'WhatsApp' (Outline). Background should be a high-contrast gritty image with a black/white overlay.",
+      "style": "h-[90vh] flex flex-col justify-end p-4 md:p-12 relative overflow-hidden"
+    },
+    {
+      "name": "Marquee Divider",
+      "description": "Continuously scrolling text of disciplines: SURFSKATE • SURF • JIU-JITSU • PURE CREW",
+      "style": "bg-black text-white py-4 border-y border-white"
+    },
+    {
+      "name": "A CREW (About)",
+      "description": "Manifesto-style. Raw lifestyle ethos. Huge leading text, asymmetric layout. Introduce the vibe.",
+      "style": "bg-white text-black py-24 md:py-32 px-4 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-8"
+    },
+    {
+      "name": "Modalidades (Disciplines)",
+      "description": "3 signature cards/blocks for SURFSKATE, SURF, JIU-JITSU. Huge numbering (01, 02, 03).",
+      "style": "bg-black text-white py-24 md:py-32 px-4 md:px-12"
+    },
+    {
+      "name": "Galeria (Visuals)",
+      "description": "Masonry or Bento grid of raw photos (surf, skate, jiu-jitsu, community). Grayscale filter on all.",
+      "style": "bg-white py-24 px-4 md:px-12"
+    },
+    {
+      "name": "Merch Teaser",
+      "description": "Small section, not the focus. Link to shop.",
+      "style": "bg-white border-y border-black py-16 text-center"
+    },
+    {
+      "name": "Inscrição / Contato",
+      "description": "Lead capture form (Name, Email, Phone, Modality, Message) + direct WhatsApp and Instagram CTAs.",
+      "style": "bg-[#0a0a0a] text-white py-24 px-4 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16"
+    },
+    {
+      "name": "Footer",
+      "description": "Massive brand mark, copyright, social links (Instagram, WhatsApp, YouTube, Email).",
+      "style": "bg-black text-white py-12 px-4 border-t border-white/20 text-center md:text-left"
+    }
+  ],
+  "media": {
+    "logo_url": "https://customer-assets.emergentagent.com/job_d3987143-cf2c-4c68-a714-b65645bde2aa/artifacts/p62fhbaj_pure_crew_logo_final%201%20%281%29.png",
+    "images": {
+      "hero_bg": "https://images.pexels.com/photos/34205169/pexels-photo-34205169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920",
+      "surfskate_card": "https://images.unsplash.com/photo-1760440315765-81b3ee85e011?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwzfHxza2F0ZWJvYXJkaW5nJTIwc3VyZnNrYXRlJTIwYm93bHxlbnwwfHx8fDE3NzcxNDQ2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "surf_card": "https://images.unsplash.com/photo-1607941176469-3030fe380ab1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwc3VyZmluZyUyMG9jZWFufGVufDB8fHx8MTc3NzE0NDYyNXww&ixlib=rb-4.1.0&q=85",
+      "jiujitsu_card": "https://images.pexels.com/photos/15545735/pexels-photo-15545735.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "gallery_1": "https://images.unsplash.com/photo-1573396974304-0eaf0127ffde?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwxfHxza2F0ZWJvYXJkaW5nJTIwc3VyZnNrYXRlJTIwYm93bHxlbnwwfHx8fDE3NzcxNDQ2MjV8MA&ixlib=rb-4.1.0&q=85",
+      "gallery_2": "https://images.pexels.com/photos/5507151/pexels-photo-5507151.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "gallery_3": "https://images.unsplash.com/photo-1513760699494-fa3bfaeffca4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxicmF6aWxpYW4lMjBqaXUlMjBqaXRzdSUyMGdpJTIwdHJhaW5pbmd8ZW58MHx8fHwxNzc3MTQ0NjI2fDA&ixlib=rb-4.1.0&q=85",
+      "community_van": "https://images.unsplash.com/photo-1633121096399-6c0a91b90387?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHw0fHxibGFjayUyMGFuZCUyMHdoaXRlJTIwc3VyZmluZyUyMG9jZWFufGVufDB8fHx8MTc3NzE0NDYyNXww&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Load Montserrat font from Google Fonts in index.html or global CSS.",
+    "No testimonials section as per user request.",
+    "Ensure all imagery is visually forced into black and white using CSS (grayscale) unless it's already B&W.",
+    "Add a fixed, pointer-events-none noise/grain overlay div covering the entire viewport to give it a gritty editorial feel.",
+    "Include data-testid on all interactive elements (buttons, links, form inputs).",
+    "Use lucide-react for any icons needed.",
+    "Implement the contact form using Shadcn but strip the Vercel-look and use brutalist styling (square corners, bold borders).",
+    "Create a solid, working lead capture form layout and include placeholder WhatsApp/Instagram links.",
+    "Do not add generic corporate 'card' shadows. Use hard borders and solid colors.",
+    "Use framer-motion for simple on-scroll reveals (fade in up) to give the page momentum."
+  ]
+}
