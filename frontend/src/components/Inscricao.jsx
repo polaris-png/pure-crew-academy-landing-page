@@ -102,7 +102,7 @@ export const Inscricao = () => {
               className="flex items-center justify-between border border-white/20 hover:border-white px-5 py-4 group transition-colors"
             >
               <span className="flex items-center gap-3 text-sm tracking-[0.22em] uppercase">
-                <Instagram size={18} /> @PURECREW
+                <Instagram size={18} /> {BRAND.instagramHandle}
               </span>
               <ArrowUpRight
                 size={18}

@@ -41,7 +41,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="pc-link flex items-center gap-3 text-sm tracking-[0.2em] uppercase"
                 >
-                  <Instagram size={16} /> INSTAGRAM
+                  <Instagram size={16} /> {BRAND.instagramHandle}
                 </a>
               </li>
               <li>
