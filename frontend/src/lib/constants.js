@@ -12,7 +12,7 @@ export const BRAND = {
 };
 
 export const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1760440315765-81b3ee85e011?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwzfHxza2F0ZWJvYXJkaW5nJTIwc3VyZnNrYXRlJTIwYm93bHxlbnwwfHx8fDE3NzcxNDQ2MjV8MA&ixlib=rb-4.1.0&q=85&w=1920",
+  hero: "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920",
   surfskate:
     "https://images.unsplash.com/photo-1760440315765-81b3ee85e011?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwzfHxza2F0ZWJvYXJkaW5nJTIwc3VyZnNrYXRlJTIwYm93bHxlbnwwfHx8fDE3NzcxNDQ2MjV8MA&ixlib=rb-4.1.0&q=85",
   surf: "https://images.unsplash.com/photo-1607941176469-3030fe380ab1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxibGFjayUyMGFuZCUyMHdoaXRlJTIwc3VyZmluZyUyMG9jZWFufGVufDB8fHx8MTc3NzE0NDYyNXww&ixlib=rb-4.1.0&q=85",

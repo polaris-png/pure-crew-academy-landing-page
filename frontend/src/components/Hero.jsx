@@ -1,7 +1,70 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowDownRight, MessageCircle } from "lucide-react";
-import { BRAND, IMAGES } from "../lib/constants";
+import { BRAND } from "../lib/constants";
+
+/**
+ * Decorative SVG illustration of a surfskate deck (top-down view).
+ * Pure vector, no stock photo dependency, no people.
+ */
+const SurfskateArt = ({ className = "" }) => (
+  <svg
+    viewBox="0 0 320 900"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-hidden
+  >
+    {/* deck outline (surfskate fish-like shape) */}
+    <defs>
+      <linearGradient id="deckGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.55" />
+      </linearGradient>
+    </defs>
+
+    <g fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinejoin="round">
+      {/* deck */}
+      <path
+        d="M160 30 C 235 35 280 100 280 220 L 280 670 C 280 790 235 855 160 860 C 85 855 40 790 40 670 L 40 220 C 40 100 85 35 160 30 Z"
+        fill="url(#deckGrad)"
+        fillOpacity="0.04"
+      />
+      {/* concave inner line */}
+      <path
+        d="M160 60 C 215 65 250 120 250 220 L 250 670 C 250 770 215 825 160 830 C 105 825 70 770 70 670 L 70 220 C 70 120 105 65 160 60 Z"
+        opacity="0.5"
+      />
+      {/* center spine */}
+      <line x1="160" y1="80" x2="160" y2="810" opacity="0.35" strokeDasharray="4 8" />
+
+      {/* top truck */}
+      <rect x="100" y="160" width="120" height="14" rx="4" />
+      <circle cx="105" cy="167" r="22" />
+      <circle cx="215" cy="167" r="22" />
+      {/* bottom truck */}
+      <rect x="100" y="720" width="120" height="14" rx="4" />
+      <circle cx="105" cy="727" r="22" />
+      <circle cx="215" cy="727" r="22" />
+
+      {/* griptape texture dots */}
+      <g opacity="0.18">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <circle
+            key={i}
+            cx={80 + ((i * 53) % 160)}
+            cy={220 + i * 18}
+            r="1.4"
+            fill="#fff"
+            stroke="none"
+          />
+        ))}
+      </g>
+
+      {/* logo dot accent */}
+      <circle cx="160" cy="445" r="10" fill="#C25A46" stroke="none" />
+    </g>
+  </svg>
+);
 
 export const Hero = () => {
   const scrollTo = (id) =>
@@ -13,20 +76,50 @@ export const Hero = () => {
       data-testid="hero-section"
       className="relative min-h-[100svh] w-full overflow-hidden bg-black text-white flex flex-col"
     >
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src={IMAGES.hero}
-          alt="Pure Crew lifestyle"
-          className="w-full h-full object-cover grayscale contrast-125 brightness-90 opacity-70"
-          draggable={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
+      {/* Concrete texture background */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "32px 32px, 17px 17px",
+          backgroundPosition: "0 0, 8px 8px",
+          opacity: 0.6,
+        }}
+      />
+
+      {/* Diagonal scratch lines */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.08]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(115deg, transparent 0 38px, rgba(255,255,255,0.5) 38px 39px, transparent 39px 80px)",
+        }}
+      />
+
+      {/* Decorative surfskate illustration on the right */}
+      <div
+        aria-hidden
+        className="absolute top-0 right-0 h-full pointer-events-none flex items-center justify-end pr-2 md:pr-12"
+      >
+        <SurfskateArt className="h-[78%] md:h-[88%] w-auto opacity-[0.55] md:opacity-[0.7]" />
       </div>
+
+      {/* Vignette */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 20% 60%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.85) 100%)",
+        }}
+      />
 
       {/* Top meta line */}
       <div className="relative z-10 flex items-center justify-between px-4 md:px-12 pt-24 md:pt-32 text-[11px] tracking-[0.3em] uppercase text-white/70">
-        <span data-testid="hero-meta-left">EST. SP — BR</span>
+        <span data-testid="hero-meta-left">PURE CREW · ACADEMY</span>
         <span data-testid="hero-meta-right">N° 001 / EDIÇÃO ATUAL</span>
       </div>
 
@@ -70,7 +163,7 @@ export const Hero = () => {
             className="md:col-span-5 text-sm md:text-base uppercase tracking-[0.18em] leading-relaxed text-white/85 max-w-md"
           >
             Uma escola. Três disciplinas. Uma só crew.
-            Surfskate, surf e jiu-jitsu pra quem vive o movimento de verdade.
+            Surfskate é o nosso foco — surf e jiu-jitsu completam o movimento.
           </p>
 
           <div className="md:col-span-7 flex flex-col sm:flex-row gap-3 md:justify-end">
