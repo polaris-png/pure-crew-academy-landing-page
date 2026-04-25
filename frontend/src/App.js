@@ -1,53 +1,68 @@
-import { useEffect } from "react";
+import React from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { Toaster } from "sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
+import { About } from "@/components/About";
+import { Modalidades } from "@/components/Modalidades";
+import { Galeria } from "@/components/Galeria";
+import { MerchTeaser } from "@/components/MerchTeaser";
+import { Inscricao } from "@/components/Inscricao";
+import { Footer } from "@/components/Footer";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
+const Landing = () => {
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
+    <div className="App relative bg-white text-black overflow-x-clip" data-testid="landing-root">
+      <div className="grain-overlay" aria-hidden />
+      <Header />
+      <main>
+        <Hero />
+        <Marquee
+          items={["SURFSKATE", "SURF", "JIU-JITSU", "PURE CREW"]}
+          dark
+          testId="marquee-disciplines"
+        />
+        <About />
+        <Modalidades />
+        <Marquee
+          items={["ONDA", "CONCRETO", "TATAMI", "MOVIMENTO PURO"]}
+          dark={false}
+          testId="marquee-words"
+        />
+        <Galeria />
+        <MerchTeaser />
+        <Inscricao />
+        <Footer />
+      </main>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            background: "#000",
+            color: "#fff",
+            border: "1px solid #fff",
+            borderRadius: 0,
+            fontFamily: "Montserrat, sans-serif",
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            fontSize: "11px",
+          },
+        }}
+      />
     </div>
   );
 };
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

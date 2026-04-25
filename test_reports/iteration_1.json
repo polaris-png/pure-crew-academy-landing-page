@@ -1,0 +1,34 @@
+{
+  "summary": "Backend: 10/10 pytest cases passed against public REACT_APP_BACKEND_URL (root, leads CRUD, validation 422 cases, list sort desc, no _id leakage, status regression). Frontend: Header, Hero, Inscricao form (success path with sonner toast 'Inscrição recebida.'), modality buttons, sections, footer socials, mobile menu open/close all functional. Minor discrepancy: review expected nav-acrew-btn / section #acrew, but code uses nav-crew-btn / id='crew' (label 'A CREW' renders correctly).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Header nav", "issue": "Review request expected data-testid='nav-acrew-btn' and section id '#acrew', but implementation uses data-testid='nav-crew-btn' and id='crew'. Link label 'A CREW' is correct and click navigates to that section. Naming mismatch only.", "selector": "[data-testid='nav-crew-btn']", "priority": "LOW"}
+    ],
+    "integration_issues": [
+      {"flow": "Inscrição empty-form submit", "issue": "Empty form submit did NOT show a sonner error toast. Browser-native HTML5 'required' attribute is blocking the submit (so form does not submit, which is good), but the spec says an error toast should appear. No custom JS validation toast is fired before native validation triggers.", "affected_selectors": ["[data-testid='form-submit-btn']"]}
+    ],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/backend/tests/test_purecrew_api.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "Optional: rename Header nav id from 'crew' to 'acrew' (and About section id) to match review request testids ('nav-acrew-btn', '#acrew'), OR update review expectations.",
+    "Optional: add explicit JS-side validation in Inscricao.jsx that fires a sonner error toast (e.g., toast.error('Preencha os campos obrigatórios')) BEFORE/instead-of relying solely on HTML5 'required' so the spec ('shows error toast and does NOT submit') is fully satisfied."
+  ],
+  "critical_code_review_comments": [
+    "server.py: logger is referenced inside create_lead exception handler before logging.basicConfig/logger is defined (logger defined at line 117 but used at line 90). If an exception occurs in lead creation, NameError will mask the real error. Move logging setup above route definitions.",
+    "server.py: CORS allow_origins='*' combined with allow_credentials=True is invalid per CORS spec; browsers will reject. Either restrict origins or set allow_credentials=False.",
+    "server.py: Lead/StatusCheck store datetime as ISO string in Mongo but model expects datetime — currently handled with ad-hoc conversion in GET handlers; consider storing as native BSON datetime."
+  ],
+  "updated_files": ["/app/backend/tests/test_purecrew_api.py", "/app/test_reports/iteration_1.json"],
+  "success_rate": {"backend": "100%", "frontend": "~92%"},
+  "test_credentials": "none required",
+  "seed_data_creation": "Created a few TEST_-prefixed leads and one TEST_regression status_check via API tests; not cleaned up (low impact, prefix identifiable).",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Backend tests live at /app/backend/tests/test_purecrew_api.py (pytest, JUnit XML at /app/test_reports/pytest/pytest_results.xml). Hero title renders without spaces between words ('ONDA.CONCRETO.TATAMI') because of stacked layout — that's by design. Default modality is 'surfskate' (active on load). Section ids in code: hero, crew (A CREW), modalidades, galeria, merch, inscricao.",
+  "rca of the issue": "Empty-form toast missing: Inscricao.jsx likely uses native <input required> rather than preventing default and calling toast.error before fetch, so sonner toast never fires for empty submits. Header nav-acrew-btn naming mismatch: Header.jsx maps nav items with id='crew' which generates testid 'nav-crew-btn' instead of 'nav-acrew-btn'."
+}
