@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Plus } from "lucide-react";
 import {
-  Waves,
-  Activity,
-  Swords,
-  Puzzle,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+  SurfskateIcon,
+  SurfIcon,
+  JiuJitsuIcon,
+  PuzzleIcon,
+} from "./icons/SportIcons";
 
 const PILLARS = [
   "Instrutores certificados",
@@ -18,44 +17,37 @@ const PILLARS = [
 
 const MAIN = [
   {
-    Icon: Activity,
+    Icon: SurfskateIcon,
     eyebrow: "PURE Freedom",
     title: "Surfskate",
     levels: "Iniciante · Intermédio · Avançado",
-    body:
-      "Carve, base e fluidez. A ligação direta com o surf — a base que prepara o teu corpo para a água.",
     tags: ["Coaching privado", "Group coaching", "Sessões em grupo", "Vídeo-análise"],
     note: "Sessões em grupo aos sábados à tarde · Casa da Música",
   },
   {
-    Icon: Waves,
+    Icon: SurfIcon,
     eyebrow: "PURE Experience",
     title: "Surf",
     levels: "Iniciante & Intermédio",
-    body:
-      "Da pré-paddle à manobra. Aulas no mar com vídeo-análise, leitura de ondas e progressão real.",
     tags: ["Coaching privado", "Group coaching", "Vídeo-análise"],
     note: "Sessões agendadas conforme as condições do mar",
   },
   {
-    Icon: Swords,
+    Icon: JiuJitsuIcon,
     eyebrow: "PURE Technic",
     title: "Jiu-Jitsu",
     levels: "Faixas branca & azul",
-    body:
-      "Princípios fundamentais e abordagem por drills. Técnica que sobra, ego que falta.",
     tags: ["1-para-1", "1-para-2", "Vídeo-análise"],
     note: "Em parceria com ArtSuave Jiu-Jitsu",
   },
 ];
 
 const COMPLEMENTARY = {
-  Icon: Puzzle,
+  Icon: PuzzleIcon,
   eyebrow: "PURE Upgrade",
   title: "Treino específico",
-  body:
-    "Pacotes complementares com planos personalizados aos teus objetivos.",
   pillars: ["Velocidade", "Força", "Flexibilidade", "Mobilidade", "Resistência"],
+  note: "Pack extra · adicionar a qualquer programa",
 };
 
 export const Modalidades = () => {
@@ -120,8 +112,8 @@ export const Modalidades = () => {
                 className="pc-card p-7 flex flex-col"
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center">
-                    <Icon size={22} strokeWidth={1.5} className="text-neutral-900" />
+                  <div className="w-14 h-14 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900">
+                    <Icon size={32} />
                   </div>
                   <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-neutral-400">
                     {it.eyebrow}
@@ -131,11 +123,8 @@ export const Modalidades = () => {
                 <h3 className="text-xl font-semibold tracking-tight text-neutral-900 mb-1">
                   {it.title}
                 </h3>
-                <p className="text-xs font-medium tracking-wide text-neutral-500 mb-4">
+                <p className="text-xs font-medium tracking-wide text-neutral-500 mb-5">
                   {it.levels}
-                </p>
-                <p className="text-sm text-neutral-600 leading-relaxed mb-5">
-                  {it.body}
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 mb-5">
@@ -149,16 +138,17 @@ export const Modalidades = () => {
                   ))}
                 </div>
 
-                <p className="text-xs text-neutral-500 italic mb-5 leading-relaxed">
+                <p className="text-xs text-neutral-500 italic mb-6 leading-relaxed">
                   {it.note}
                 </p>
 
                 <button
                   onClick={() => scrollTo("inscricao")}
                   data-testid={`modalidade-cta-${it.title.toLowerCase()}`}
-                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 hover:gap-2.5 transition-all"
+                  className="pc-btn mt-auto self-start"
+                  style={{ padding: "0.55rem 1.1rem", fontSize: "0.8rem" }}
                 >
-                  Quero inscrever-me
+                  Saber mais
                   <ArrowRight size={14} />
                 </button>
               </motion.article>
@@ -166,7 +156,7 @@ export const Modalidades = () => {
           })}
         </div>
 
-        {/* Complementary wide card */}
+        {/* Complementary wide card — "extra pack" */}
         <motion.article
           data-testid="modalidade-card-complementary"
           initial={{ opacity: 0, y: 16 }}
@@ -176,24 +166,26 @@ export const Modalidades = () => {
           className="pc-card mt-5 p-7 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start"
         >
           <div className="md:col-span-1 flex md:block">
-            <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center">
-              <COMPLEMENTARY.Icon
-                size={22}
-                strokeWidth={1.5}
-                className="text-neutral-900"
-              />
+            <div className="w-14 h-14 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900">
+              <COMPLEMENTARY.Icon size={32} />
             </div>
           </div>
 
           <div className="md:col-span-7">
-            <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-neutral-400">
-              {COMPLEMENTARY.eyebrow}
-            </span>
-            <h3 className="text-xl font-semibold tracking-tight text-neutral-900 mt-1 mb-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-neutral-400">
+                {COMPLEMENTARY.eyebrow}
+              </span>
+              <span className="inline-flex items-center gap-1 text-[10px] font-semibold tracking-[0.12em] uppercase px-2 py-1 rounded-full bg-neutral-900 text-white">
+                <Plus size={11} strokeWidth={2.4} />
+                PACK EXTRA
+              </span>
+            </div>
+            <h3 className="text-xl font-semibold tracking-tight text-neutral-900 mt-2 mb-1">
               {COMPLEMENTARY.title}
             </h3>
-            <p className="text-sm text-neutral-600 leading-relaxed max-w-md">
-              {COMPLEMENTARY.body}
+            <p className="text-xs text-neutral-500 italic">
+              {COMPLEMENTARY.note}
             </p>
           </div>
 
