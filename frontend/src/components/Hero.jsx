@@ -44,17 +44,14 @@ export const Hero = () => {
               className="mt-6 space-y-4 text-base md:text-lg text-neutral-600 leading-relaxed max-w-xl"
             >
               <p data-testid="hero-paragraph-1">
-                Uma década de experiência prática levou-nos a partilhar a nossa
-                visão com o mundo.
+                Mais de 10 anos de experiência prática sustentam a visão que
+                hoje partilhamos.
               </p>
               <p data-testid="hero-paragraph-2">
-                Pensado para quem partilha a nossa paixão e quer evoluir através
-                de treino estruturado.
-              </p>
-              <p data-testid="hero-paragraph-3">
-                A nossa equipa aperfeiçoou um método baseado em ciência, com
-                100% de aplicação à técnica de surf, ancorado em biomecânica e
-                enriquecido com treino corporal e mental.
+                Pensado em quem partilha a nossa paixão, a nossa equipa
+                desenvolveu um método baseado em ciência, com 100% de aplicação
+                à técnica de surf, ancorado na biomecânica e enriquecido com
+                treino corporal e mental.
               </p>
             </div>
 

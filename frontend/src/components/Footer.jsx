@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, MessageCircle, Youtube, Mail } from "lucide-react";
+import { Instagram, MessageCircle, Mail } from "lucide-react";
 import { BRAND } from "../lib/constants";
 
 export const Footer = () => {
@@ -11,7 +11,7 @@ export const Footer = () => {
     >
       <div className="max-w-[1100px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
-          <div className="md:col-span-5 flex items-center gap-3">
+          <div className="md:col-span-7 flex items-center gap-3">
             <img src={BRAND.logoUrl} alt="Pure Crew" className="h-10 w-auto" />
             <div>
               <p className="text-sm font-semibold text-neutral-900">Pure Crew</p>
@@ -21,44 +21,30 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-3">
-            <p className="text-xs font-medium text-neutral-400 mb-3 tracking-wide">
-              NAVEGAR
-            </p>
-            <ul className="space-y-2 text-sm">
-              {[
-                ["modalidades", "Modalidades"],
-                ["crew", "A Crew"],
-                ["galeria", "Galeria"],
-                ["inscricao", "Inscrição"],
-              ].map(([id, label]) => (
-                <li key={id}>
-                  <button
-                    data-testid={`footer-nav-${id}`}
-                    onClick={() =>
-                      document
-                        .getElementById(id)
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="text-neutral-600 hover:text-neutral-900 transition-colors"
-                  >
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
             <p className="text-xs font-medium text-neutral-400 mb-3 tracking-wide">
               REDES
             </p>
             <div className="flex flex-wrap gap-2">
               {[
-                { test: "footer-instagram", href: BRAND.instagram, Icon: Instagram, label: "Instagram" },
-                { test: "footer-whatsapp", href: BRAND.whatsapp, Icon: MessageCircle, label: "WhatsApp" },
-                { test: "footer-youtube", href: BRAND.youtube, Icon: Youtube, label: "YouTube" },
-                { test: "footer-email", href: `mailto:${BRAND.email}`, Icon: Mail, label: "Email" },
+                {
+                  test: "footer-instagram",
+                  href: BRAND.instagram,
+                  Icon: Instagram,
+                  label: "Instagram",
+                },
+                {
+                  test: "footer-whatsapp",
+                  href: BRAND.whatsapp,
+                  Icon: MessageCircle,
+                  label: "WhatsApp",
+                },
+                {
+                  test: "footer-email",
+                  href: `mailto:${BRAND.email}`,
+                  Icon: Mail,
+                  label: "Email",
+                },
               ].map((s) => (
                 <a
                   key={s.test}
