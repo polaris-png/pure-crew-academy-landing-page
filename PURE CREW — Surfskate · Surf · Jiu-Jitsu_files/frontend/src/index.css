@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --pc-bg: #fafafa;
+    --pc-surface: #ffffff;
+    --pc-text: #0a0a0a;
+    --pc-text-muted: #6b7280;
+    --pc-text-soft: #9ca3af;
+    --pc-border: #e5e7eb;
+    --pc-border-strong: #0a0a0a;
+    --pc-accent: #c25a46;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+    background: var(--pc-bg);
+    color: var(--pc-text);
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.005em;
+}
+
+::selection {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+/* Soft card */
+.pc-card {
+    background: var(--pc-surface);
+    border-radius: 20px;
+    box-shadow:
+        0 1px 2px rgba(15, 15, 15, 0.04),
+        0 4px 14px rgba(15, 15, 15, 0.05);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.pc-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 1px 2px rgba(15, 15, 15, 0.04),
+        0 12px 28px rgba(15, 15, 15, 0.08);
+}
+
+/* Subtle outline card (no hover lift) */
+.pc-card-flat {
+    background: var(--pc-surface);
+    border: 1px solid var(--pc-border);
+    border-radius: 20px;
+}
+
+/* Outline button — white bg, thin black border */
+.pc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--pc-text);
+    background: var(--pc-surface);
+    border: 1px solid var(--pc-text);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+.pc-btn:hover {
+    background: var(--pc-text);
+    color: var(--pc-surface);
+}
+.pc-btn:active { transform: translateY(1px); }
+
+.pc-btn-solid {
+    background: var(--pc-text);
+    color: var(--pc-surface);
+}
+.pc-btn-solid:hover {
+    background: var(--pc-surface);
+    color: var(--pc-text);
+}
+
+.pc-btn-ghost {
+    border-color: var(--pc-border);
+    color: var(--pc-text-muted);
+}
+.pc-btn-ghost:hover {
+    border-color: var(--pc-text);
+    background: transparent;
+    color: var(--pc-text);
+}
+
+/* Form input — clean, thin border, rounded */
+.pc-field {
+    width: 100%;
+    background: var(--pc-surface);
+    border: 1px solid var(--pc-border);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--pc-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+.pc-field::placeholder { color: var(--pc-text-soft); }
+.pc-field:focus {
+    border-color: var(--pc-text);
+    box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.06);
+}
+textarea.pc-field { resize: none; min-height: 110px; }
+
+.pc-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--pc-text);
+    margin-bottom: 0.5rem;
+}
+
+/* Tabs (underlined active, like reference) */
+.pc-tab {
+    position: relative;
+    padding: 0.75rem 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--pc-text-muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    background: transparent;
+    border: 0;
+}
+.pc-tab:hover { color: var(--pc-text); }
+.pc-tab[data-active="true"] {
+    color: var(--pc-text);
+}
+.pc-tab[data-active="true"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--pc-text);
+    border-radius: 2px;
+}
+
+/* Subtle divider line for sections */
+.pc-hr {
+    border: 0;
+    border-top: 1px solid var(--pc-border);
+}
+
+/* Shadcn defaults preserved */
+@layer base {
+    :root {
+        --background: 0 0% 98%;
+        --foreground: 0 0% 4%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 4%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 4%;
+        --primary: 0 0% 4%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 96%;
+        --secondary-foreground: 0 0% 4%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 42%;
+        --accent: 0 0% 96%;
+        --accent-foreground: 0 0% 4%;
+        --destructive: 10 52% 51%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 0 0% 4%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] { display: contents !important; }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+        column-gap: inherit; row-gap: inherit; gap: inherit;
+        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+    }
+}
