@@ -1,12 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Plus } from "lucide-react";
-import {
-  SurfskateIcon,
-  SurfIcon,
-  JiuJitsuIcon,
-  PuzzleIcon,
-} from "./icons/SportIcons";
+import { ICONS } from "../lib/constants";
 
 const PILLARS = [
   "Instrutores certificados",
@@ -17,7 +12,7 @@ const PILLARS = [
 
 const MAIN = [
   {
-    Icon: SurfskateIcon,
+    iconUrl: ICONS.surfskate,
     eyebrow: "PURE Freedom",
     title: "Surfskate",
     levels: "Iniciante · Intermédio · Avançado",
@@ -25,7 +20,7 @@ const MAIN = [
     note: "Sessões em grupo aos sábados à tarde · Casa da Música",
   },
   {
-    Icon: SurfIcon,
+    iconUrl: ICONS.surf,
     eyebrow: "PURE Experience",
     title: "Surf",
     levels: "Iniciante & Intermédio",
@@ -33,7 +28,7 @@ const MAIN = [
     note: "Sessões agendadas conforme as condições do mar",
   },
   {
-    Icon: JiuJitsuIcon,
+    iconUrl: ICONS.bjj,
     eyebrow: "PURE Technic",
     title: "Jiu-Jitsu",
     levels: "Faixas branca & azul",
@@ -43,7 +38,7 @@ const MAIN = [
 ];
 
 const COMPLEMENTARY = {
-  Icon: PuzzleIcon,
+  iconUrl: ICONS.puzzle,
   eyebrow: "PURE Upgrade",
   title: "Treino específico",
   pillars: ["Velocidade", "Força", "Flexibilidade", "Mobilidade", "Resistência"],
@@ -100,7 +95,6 @@ export const Modalidades = () => {
         {/* Main 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {MAIN.map((it, idx) => {
-            const Icon = it.Icon;
             return (
               <motion.article
                 key={it.title}
@@ -112,8 +106,13 @@ export const Modalidades = () => {
                 className="pc-card p-7 flex flex-col"
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900">
-                    <Icon size={32} />
+                  <div className="w-20 h-20 flex items-center justify-center">
+                    <img
+                      src={it.iconUrl}
+                      alt={it.title}
+                      className="w-full h-full object-contain"
+                      draggable={false}
+                    />
                   </div>
                   <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-neutral-400">
                     {it.eyebrow}
@@ -166,8 +165,13 @@ export const Modalidades = () => {
           className="pc-card mt-5 p-7 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start"
         >
           <div className="md:col-span-1 flex md:block">
-            <div className="w-14 h-14 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-900">
-              <COMPLEMENTARY.Icon size={32} />
+            <div className="w-20 h-20 flex items-center justify-center">
+              <img
+                src={COMPLEMENTARY.iconUrl}
+                alt={COMPLEMENTARY.title}
+                className="w-full h-full object-contain"
+                draggable={false}
+              />
             </div>
           </div>
 

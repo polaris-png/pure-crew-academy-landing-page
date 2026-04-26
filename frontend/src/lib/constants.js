@@ -11,6 +11,14 @@ export const BRAND = {
     "https://customer-assets.emergentagent.com/job_d3987143-cf2c-4c68-a714-b65645bde2aa/artifacts/p62fhbaj_pure_crew_logo_final%201%20%281%29.png",
 };
 
+export const ICONS = {
+  surfskate: "https://customer-assets.emergentagent.com/job_pure-crew-landing/artifacts/uobluawl_02-surfskate.png",
+  surf: "https://customer-assets.emergentagent.com/job_pure-crew-landing/artifacts/90499d2a_surfboard-NEW-B-quiver-trio.png",
+  bjj: "https://customer-assets.emergentagent.com/job_pure-crew-landing/artifacts/usoe2apr_04-bjj-kimono.png",
+  puzzle: "https://customer-assets.emergentagent.com/job_pure-crew-landing/artifacts/7g8chyiu_05-puzzle-piece.png",
+  sunrise: "https://customer-assets.emergentagent.com/job_pure-crew-landing/artifacts/fogyv31p_sunrise-sunset-B-SR-SS-letters.png",
+};
+
 export const IMAGES = {
   hero: "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920",
   surfskate:
