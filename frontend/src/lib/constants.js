@@ -5,7 +5,7 @@ export const BRAND = {
   instagram: "https://instagram.com/purecrew_academy",
   instagramHandle: "@purecrew_academy",
   youtube: "https://youtube.com/@purecrew_academy",
-  email: "contato@purecrew.com",
+  email: "purecrewacademy@gmail.com",
   shop: "https://instagram.com/purecrew_academy",
   logoUrl:
     "https://customer-assets.emergentagent.com/job_d3987143-cf2c-4c68-a714-b65645bde2aa/artifacts/p62fhbaj_pure_crew_logo_final%201%20%281%29.png",

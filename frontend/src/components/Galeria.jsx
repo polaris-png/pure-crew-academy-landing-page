@@ -34,9 +34,6 @@ export const Galeria = () => {
           >
             A crew em movimento
           </h2>
-          <p className="mt-3 text-neutral-600">
-            Frames das nossas aulas e eventos. Em breve, com fotos próprias.
-          </p>
         </div>
 
         {/* Tabs */}

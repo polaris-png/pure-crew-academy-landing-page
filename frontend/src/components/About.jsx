@@ -5,7 +5,6 @@ const STATS = [
   { n: "4", l: "Programas" },
   { n: "Todos", l: "Idades e níveis" },
   { n: "Diário", l: "Aulas disponíveis" },
-  { n: "1:6", l: "Rácio nas aulas" },
 ];
 
 export const About = () => {
@@ -49,7 +48,7 @@ export const About = () => {
         </div>
 
         {/* Stats row */}
-        <div className="mt-14 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {STATS.map((s, i) => (
             <motion.div
               key={s.l}

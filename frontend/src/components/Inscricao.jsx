@@ -62,10 +62,10 @@ export const Inscricao = () => {
             data-testid="inscricao-title"
             className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900"
           >
-            Vamos treinar?
+            Ready to improve?
           </h2>
           <p className="mt-3 text-neutral-600">
-            Deixa o teu contacto e nós respondemos em poucas horas.
+            Inscreve-te no formulário ou pede mais informações pelo WhatsApp — respondemos em poucas horas.
           </p>
         </div>
 
@@ -84,13 +84,13 @@ export const Inscricao = () => {
                   data-testid="inscricao-collapsed"
                 >
                   <p className="text-xs font-medium text-neutral-500 mb-2 tracking-wide">
-                    PRONTO PARA COMEÇAR?
+                    INSCRIÇÃO
                   </p>
                   <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900">
                     Marca a tua sessão
                   </h3>
                   <p className="mt-2.5 text-neutral-600 max-w-md">
-                    Resposta em poucas horas. Sem compromisso.
+                    Preenche o formulário e a crew entra em contacto.
                   </p>
                   <button
                     data-testid="inscricao-open-btn"
@@ -213,10 +213,7 @@ export const Inscricao = () => {
                     </div>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
-                    <p className="text-xs text-neutral-400">
-                      Os teus dados ficam connosco. Não partilhamos.
-                    </p>
+                  <div className="mt-6 flex items-center justify-end flex-wrap gap-3">
                     <button
                       type="submit"
                       data-testid="form-submit-btn"
