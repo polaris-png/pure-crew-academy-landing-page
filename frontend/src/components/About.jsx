@@ -1,12 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const STATS = [
-  { n: "4", l: "Programas" },
-  { n: "Todos", l: "Idades e níveis" },
-  { n: "Diário", l: "Aulas disponíveis" },
-];
-
 export const About = () => {
   return (
     <section
@@ -24,7 +18,7 @@ export const About = () => {
               data-testid="about-title"
               className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 leading-tight"
             >
-              Be <span className="italic">PURE CREW</span>.
+              Stay <span className="text-neutral-400">PURE</span>.
             </h2>
           </div>
 
@@ -45,26 +39,6 @@ export const About = () => {
               todos os dias, para todas as idades e níveis.
             </p>
           </motion.div>
-        </div>
-
-        {/* Stats row */}
-        <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-          {STATS.map((s, i) => (
-            <motion.div
-              key={s.l}
-              data-testid={`about-stat-${i}`}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
-              className="pc-card-flat p-6"
-            >
-              <div className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900">
-                {s.n}
-              </div>
-              <div className="text-sm text-neutral-500 mt-1.5">{s.l}</div>
-            </motion.div>
-          ))}
         </div>
       </div>
     </section>

@@ -55,9 +55,6 @@ export const Inscricao = () => {
     >
       <div className="max-w-[1100px] mx-auto">
         <div className="text-center mb-10 md:mb-14 max-w-xl mx-auto">
-          <p className="text-xs font-medium text-neutral-500 mb-3 tracking-wide">
-            INSCRIÇÃO
-          </p>
           <h2
             data-testid="inscricao-title"
             className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900"
@@ -65,7 +62,7 @@ export const Inscricao = () => {
             Ready to improve?
           </h2>
           <p className="mt-3 text-neutral-600">
-            Inscreve-te no formulário ou pede mais informações pelo WhatsApp — respondemos em poucas horas.
+            Inscreve-te no formulário ou pede mais informações pelo WhatsApp.
           </p>
         </div>
 

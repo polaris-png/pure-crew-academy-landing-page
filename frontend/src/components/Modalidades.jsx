@@ -137,7 +137,7 @@ export const Modalidades = () => {
                   ))}
                 </div>
 
-                <p className="text-xs text-neutral-500 italic mb-6 leading-relaxed">
+                <p className="text-xs text-neutral-500 mb-6 leading-relaxed">
                   {it.note}
                 </p>
 
@@ -188,7 +188,7 @@ export const Modalidades = () => {
             <h3 className="text-xl font-semibold tracking-tight text-neutral-900 mt-2 mb-1">
               {COMPLEMENTARY.title}
             </h3>
-            <p className="text-xs text-neutral-500 italic">
+            <p className="text-xs text-neutral-500">
               {COMPLEMENTARY.note}
             </p>
           </div>

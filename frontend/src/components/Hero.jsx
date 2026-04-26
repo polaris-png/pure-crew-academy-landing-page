@@ -30,13 +30,13 @@ export const Hero = () => {
             </p>
             <h1
               data-testid="hero-title"
-              className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 leading-[1.05]"
+              className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 leading-[1.05] uppercase"
             >
               Culture. Method.{" "}
               <span className="text-neutral-400">Respect.</span>
             </h1>
             <p className="mt-3 text-sm font-medium tracking-[0.18em] uppercase text-neutral-700">
-              Stay PURE
+              Be PURE CREW
             </p>
 
             <div

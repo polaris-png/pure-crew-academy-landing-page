@@ -25,9 +25,6 @@ export const Galeria = () => {
     >
       <div className="max-w-[1100px] mx-auto">
         <div className="text-center mb-10 md:mb-12">
-          <p className="text-xs font-medium text-neutral-500 mb-3 tracking-wide">
-            GALERIA
-          </p>
           <h2
             data-testid="galeria-title"
             className="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900"
@@ -87,7 +84,6 @@ export const Galeria = () => {
           data-testid="galeria-placeholder-note"
           className="mt-8 text-xs text-neutral-400 text-center"
         >
-          Os blocos serão substituídos pelas tuas próprias fotos.
         </p>
       </div>
     </section>
