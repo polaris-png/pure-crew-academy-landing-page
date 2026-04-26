@@ -7,8 +7,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Modalidades } from "@/components/Modalidades";
 import { About } from "@/components/About";
-import { Galeria } from "@/components/Galeria";
-import { MerchTeaser } from "@/components/MerchTeaser";
 import { Inscricao } from "@/components/Inscricao";
 import { Footer } from "@/components/Footer";
 
@@ -20,8 +18,6 @@ const Landing = () => {
         <Hero />
         <Modalidades />
         <About />
-        <Galeria />
-        <MerchTeaser />
         <Inscricao />
       </main>
       <Footer />
